@@ -1,4 +1,4 @@
-package com.brad.SnakeGDX;
+package com.brad.SnakeGDX.framework;
 
 import com.badlogic.gdx.utils.TimeUtils;
 

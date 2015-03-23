@@ -1,13 +1,15 @@
-package com.brad.SnakeGDX.screen;
+package com.brad.SnakeGDX.framework.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.brad.SnakeGDX.SnakeGDX;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -17,25 +19,31 @@ public class LoadingScreen extends AbstractScreen
 {
     protected Screen callingScreen;
     private Stage stage;
+    private TextureAtlas atlas;
 
     public LoadingScreen(SnakeGDX game, Screen screen) {
         super(game);
         this.callingScreen = screen;
+        game.manager.load("sprites/packed/ui/ui.pack", TextureAtlas.class);
+        game.manager.finishLoading();
     }
 
     @Override
     public void show() {
-        game.manager.load("sprite/loadScreen.jpg", Texture.class);
-        game.manager.finishLoading();
-
-        Image loadSprite = new Image(game.manager.get("sprite/loadScreen.jpg", Texture.class));
+        Image loadSprite = new Image(atlas.findRegion("loadScreen.jpg"));
         stage = new Stage();
 
         stage.addActor(loadSprite);
     }
 
-    public void load(LinkedList <String> textures) {
-        for (String texture : textures) {
+    public void loadAtlases(HashMap<String, TextureAtlas> atlases) {
+        for (String atlas : atlases.keySet()) {
+            game.manager.load(atlas, TextureAtlas.class);
+        }
+    }
+
+    public void loadTextures(HashMap<String, Texture> textures) {
+        for (String texture : textures.keySet()) {
             game.manager.load(texture, Texture.class);
         }
     }
@@ -52,6 +60,6 @@ public class LoadingScreen extends AbstractScreen
 
     @Override
     public void hide() {
-        game.manager.unload("sprite/loadScreen.jpg");
+        game.manager.unload("sprites/loadScreen.jpg");
     }
 }
