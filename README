@@ -1,4 +1,4 @@
-# ScaffoldGDX #
+# ScaffoldGDX
 
 ScaffoldGDX is a game development framework built on top of libGDX. It follows an MVC or Model-View-
 Controller design pattern. This means that every object is a collection of three separate objects, a
