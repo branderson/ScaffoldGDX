@@ -16,7 +16,7 @@ allprojects {
 
     version = '1.0'
     ext {
-        appName = 'SnakeGDX'
+        appName = 'ScaffoldGDX'
         gdxVersion = '1.5.5'
         roboVMVersion = '1.0.0-beta-01'
         box2DLightsVersion = '1.3'
