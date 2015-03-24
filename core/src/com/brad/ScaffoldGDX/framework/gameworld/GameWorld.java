@@ -1,16 +1,16 @@
-package com.brad.ScaffoldGDX.framework.gameworld.model;
+package com.brad.ScaffoldGDX.framework.gameworld;
 
-import com.brad.ScaffoldGDX.framework.gameworld.ObjectNode;
-import com.brad.ScaffoldGDX.framework.gameworld.ObjectNodePool;
+import com.brad.ScaffoldGDX.framework.gameobjects.ObjectNode;
+import com.brad.ScaffoldGDX.framework.gameobjects.ObjectNodePool;
 
 /**
  * Created by brad on 3/20/15.
  */
 public class GameWorld
 {
+    public ObjectNode scene;
+    public ObjectNode background;
     private ObjectNodePool objectNodePool;
-    private ObjectNode scene;
-    private ObjectNode background;
 
     public GameWorld(int xWidth, int yHeight) {
         objectNodePool = new ObjectNodePool();
@@ -23,6 +23,10 @@ public class GameWorld
     }
 
     public ObjectNode getBackground() { return background; }
+
+    public void setBackground(ObjectNode background) {
+        this.background = background;
+    }
 
     public ObjectNodePool getObjectNodePool() {
         return objectNodePool;

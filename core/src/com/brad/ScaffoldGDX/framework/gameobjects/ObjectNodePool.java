@@ -1,4 +1,4 @@
-package com.brad.ScaffoldGDX.framework.gameworld;
+package com.brad.ScaffoldGDX.framework.gameobjects;
 
 import com.badlogic.gdx.utils.Pool;
 

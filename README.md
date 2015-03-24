@@ -27,7 +27,11 @@ and you're done. Optionally change directory names to suit your project.
 
 ## Usage
 
-A simple Snake game is included with ScaffoldGDX as an example of its usage.
+A simple Snake game is included with ScaffoldGDX as an example of its usage. As the framework is
+built around MVC, it doesn't make use of any of libGDX's Scene2d classes except for UIs (loading
+screens, menus, etc.). As such, when developing on top of ScaffoldGDX, avoid use of anything in
+Scene2d (stage, actor, etc.) as well as the Sprite class, as all of these mix the model with the
+view.
 
 ## License
 

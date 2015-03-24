@@ -2,8 +2,8 @@ package com.brad.ScaffoldGDX.framework.screen;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.brad.ScaffoldGDX.ScaffoldGDX;
-import com.brad.ScaffoldGDX.framework.gameworld.model.GameWorld;
-import com.brad.ScaffoldGDX.framework.gameworld.view.GameRenderer;
+import com.brad.ScaffoldGDX.framework.gameworld.GameRenderer;
+import com.brad.ScaffoldGDX.framework.gameworld.GameWorld;
 import com.brad.ScaffoldGDX.framework.helpers.GameClock;
 
 /**
@@ -15,6 +15,7 @@ public class GameScreen extends AbstractScreen
     public GameWorld world;
     public GameRenderer renderer;
     public boolean loadedAssets;
+    public boolean retrievedAssets;
     public SpriteBatch batch;
 
     public GameScreen(ScaffoldGDX game, int tps, int maxFps, int xWidth, int yHeight) {
@@ -42,7 +43,8 @@ public class GameScreen extends AbstractScreen
         world.update();
     }
 
-    public void handleInput() {}
+    public void handleInput() {
+    }
 
     public void drawGame() {
         renderer.render();
@@ -58,6 +60,7 @@ public class GameScreen extends AbstractScreen
             game.setScreen(loadingScreen);
         } else {
             renderer.retrieveAssets(game.manager);
+            retrievedAssets = true;
         }
     }
 

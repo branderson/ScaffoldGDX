@@ -1,4 +1,4 @@
-package com.brad.ScaffoldGDX.framework.gameworld.view;
+package com.brad.ScaffoldGDX.framework.gameworld;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.brad.ScaffoldGDX.framework.gameworld.ObjectNode;
-import com.brad.ScaffoldGDX.framework.gameworld.model.GameWorld;
+import com.brad.ScaffoldGDX.framework.gameobjects.ObjectNode;
+import com.brad.ScaffoldGDX.framework.gameobjects.SceneNode;
 import com.brad.ScaffoldGDX.framework.screen.LoadingScreen;
 
 import java.util.HashMap;
@@ -19,28 +19,29 @@ import java.util.HashMap;
  */
 public class GameRenderer
 {
+    public ObjectNode background;
+    public HashMap<String, TextureAtlas> atlases;
+    public HashMap<String, Texture> textures;
     GameWorld world;
-    ObjectNode scene;
     OrthographicCamera camera;
     FitViewport viewport;
     SpriteBatch batch;
-    ObjectNode background;
-    public HashMap<String, TextureAtlas> atlases;
-    public HashMap<String, Texture> textures;
 
     public GameRenderer(GameWorld world, SpriteBatch batch, int viewportWidth, int viewportHeight) {
         this.world = world;
-        scene = world.getScene();
         camera = new OrthographicCamera();
         viewport = new FitViewport(viewportWidth, viewportHeight, camera);
         this.batch = batch;
-        background = world.getBackground();
         atlases = new HashMap<String, TextureAtlas>();
         textures = new HashMap<String, Texture>();
     }
 
     public void addAtlas(TextureAtlas atlas, String filename) {
         atlases.put(filename, atlas);
+    }
+
+    public TextureAtlas getAtlas(String filename) {
+        return atlases.get(filename);
     }
 
     public void addTexture(Texture texture, String filename) {
@@ -79,12 +80,14 @@ public class GameRenderer
         // Draw the layers
         batch.begin();
         batch.disableBlending();
-        for (ObjectNode node : background.getOrderedObjectNodes()) {
-            node.view.draw(batch);
+        for (SceneNode node : world.getBackground().getOrderedObjectNodes()) {
+            ObjectNode objectNode = (ObjectNode) node;
+            objectNode.getView().draw(batch);
         }
         batch.enableBlending();
-        for (ObjectNode node : scene.getOrderedObjectNodes()) {
-            node.view.draw(batch);
+        for (SceneNode node : world.getScene().getOrderedObjectNodes()) {
+            ObjectNode objectNode = (ObjectNode) node;
+            objectNode.getView().draw(batch);
         }
         batch.end();
     }
