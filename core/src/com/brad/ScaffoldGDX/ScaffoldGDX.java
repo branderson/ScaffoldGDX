@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.brad.ScaffoldGDX.framework.config.Controls;
 import com.brad.ScaffoldGDX.game.screens.MainGameScreen;
 
@@ -14,11 +15,13 @@ public class ScaffoldGDX extends Game
     public Controls controls;
     public AssetManager manager;
     public InputMultiplexer input;
+    public SpriteBatch batch;
 
     public void create() {
         controls = new Controls();
         manager = new AssetManager();
         input = new InputMultiplexer();
+        batch = new SpriteBatch();
         Gdx.input.setInputProcessor(input);
         setScreen(new MainGameScreen(this, 60, 60, WIDTH, HEIGHT));
     }

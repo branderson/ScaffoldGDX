@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.brad.ScaffoldGDX.ScaffoldGDX;
 
 public class AndroidLauncher extends AndroidApplication
 {
@@ -11,6 +12,6 @@ public class AndroidLauncher extends AndroidApplication
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-        initialize(new SnakeGDX(), config);
+        initialize(new ScaffoldGDX(), config);
     }
 }

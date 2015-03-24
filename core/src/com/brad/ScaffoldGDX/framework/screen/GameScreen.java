@@ -1,8 +1,10 @@
 package com.brad.ScaffoldGDX.framework.screen;
 
-import com.brad.ScaffoldGDX.framework.GameClock;
-import com.brad.ScaffoldGDX.framework.gameworld.view.GameRenderer;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.brad.ScaffoldGDX.ScaffoldGDX;
 import com.brad.ScaffoldGDX.framework.gameworld.model.GameWorld;
+import com.brad.ScaffoldGDX.framework.gameworld.view.GameRenderer;
+import com.brad.ScaffoldGDX.framework.helpers.GameClock;
 
 /**
  * Created by brad on 3/16/15.
@@ -13,12 +15,14 @@ public class GameScreen extends AbstractScreen
     public GameWorld world;
     public GameRenderer renderer;
     public boolean loadedAssets;
+    public SpriteBatch batch;
 
-    public GameScreen(SnakeGDX game, int tps, int maxFps, int xWidth, int yHeight) {
+    public GameScreen(ScaffoldGDX game, int tps, int maxFps, int xWidth, int yHeight) {
         super(game);
         clock = new GameClock(tps, maxFps);
         world = new GameWorld(xWidth, yHeight);
-        renderer = new GameRenderer(world, xWidth, yHeight);
+        batch = new SpriteBatch();
+        renderer = new GameRenderer(world, batch, xWidth, yHeight);
     }
 
     @Override

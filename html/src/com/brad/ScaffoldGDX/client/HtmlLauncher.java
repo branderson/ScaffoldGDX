@@ -3,6 +3,7 @@ package com.brad.ScaffoldGDX.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
+import com.brad.ScaffoldGDX.ScaffoldGDX;
 
 public class HtmlLauncher extends GwtApplication
 {
@@ -14,6 +15,6 @@ public class HtmlLauncher extends GwtApplication
 
     @Override
     public ApplicationListener getApplicationListener() {
-        return new SnakeGDX();
+        return new ScaffoldGDX();
     }
 }

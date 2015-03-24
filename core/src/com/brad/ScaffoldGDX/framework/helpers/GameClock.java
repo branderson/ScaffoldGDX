@@ -1,4 +1,4 @@
-package com.brad.ScaffoldGDX.framework;
+package com.brad.ScaffoldGDX.framework.helpers;
 
 import com.badlogic.gdx.utils.TimeUtils;
 

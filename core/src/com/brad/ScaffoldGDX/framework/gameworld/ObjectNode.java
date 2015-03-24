@@ -21,6 +21,7 @@ public class ObjectNode extends SceneNode
     public ObjectNode() {
         // TODO: Make child objects part of childList, implement their destroys
         super();
+        childList = new LinkedList<ObjectNode>();
         model = null;
         view = null;
         control = null;

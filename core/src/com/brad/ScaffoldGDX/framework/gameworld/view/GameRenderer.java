@@ -28,18 +28,16 @@ public class GameRenderer
     public HashMap<String, TextureAtlas> atlases;
     public HashMap<String, Texture> textures;
 
-    public GameRenderer(GameWorld world, int viewportWidth, int viewportHeight) {
+    public GameRenderer(GameWorld world, SpriteBatch batch, int viewportWidth, int viewportHeight) {
         this.world = world;
         scene = world.getScene();
         camera = new OrthographicCamera();
         viewport = new FitViewport(viewportWidth, viewportHeight, camera);
-        batch = new SpriteBatch();
+        this.batch = batch;
         background = world.getBackground();
         atlases = new HashMap<String, TextureAtlas>();
         textures = new HashMap<String, Texture>();
     }
-
-    // TODO: Add way to set background
 
     public void addAtlas(TextureAtlas atlas, String filename) {
         atlases.put(filename, atlas);

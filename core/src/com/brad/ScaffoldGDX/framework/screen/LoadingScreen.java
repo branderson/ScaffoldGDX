@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.brad.ScaffoldGDX.ScaffoldGDX;
 
 import java.util.HashMap;
 
@@ -19,16 +20,17 @@ public class LoadingScreen extends AbstractScreen
     private Stage stage;
     private TextureAtlas atlas;
 
-    public LoadingScreen(SnakeGDX game, Screen screen) {
+    public LoadingScreen(ScaffoldGDX game, Screen screen) {
         super(game);
         this.callingScreen = screen;
-        game.manager.load("sprites/packed/ui/ui.pack", TextureAtlas.class);
+        game.manager.load("sprites/packed/ui/ui.atlas", TextureAtlas.class);
         game.manager.finishLoading();
+        atlas = game.manager.get("sprites/packed/ui/ui.atlas");
     }
 
     @Override
     public void show() {
-        Image loadSprite = new Image(atlas.findRegion("loadScreen.jpg"));
+        Image loadSprite = new Image(atlas.findRegion("loadScreen"));
         stage = new Stage();
 
         stage.addActor(loadSprite);
@@ -58,6 +60,6 @@ public class LoadingScreen extends AbstractScreen
 
     @Override
     public void hide() {
-        game.manager.unload("sprites/loadScreen.jpg");
+        game.manager.unload("sprites/packed/ui/ui.atlas");
     }
 }

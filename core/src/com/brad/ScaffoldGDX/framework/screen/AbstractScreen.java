@@ -1,6 +1,7 @@
 package com.brad.ScaffoldGDX.framework.screen;
 
 import com.badlogic.gdx.Screen;
+import com.brad.ScaffoldGDX.ScaffoldGDX;
 import com.brad.ScaffoldGDX.framework.config.Controls;
 import com.brad.ScaffoldGDX.framework.helpers.ScreenInputHandler;
 
@@ -9,11 +10,11 @@ import com.brad.ScaffoldGDX.framework.helpers.ScreenInputHandler;
  */
 public abstract class AbstractScreen implements Screen
 {
-    protected SnakeGDX game;
+    protected ScaffoldGDX game;
     private ScreenInputHandler handler;
     private Controls controls;
 
-    public AbstractScreen(SnakeGDX game) {
+    public AbstractScreen(ScaffoldGDX game) {
         this.game = game;
         this.controls = game.controls;
         handler = new ScreenInputHandler(this);

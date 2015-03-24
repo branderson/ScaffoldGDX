@@ -16,6 +16,11 @@ public class ObjectNodeSort {
     };
 
     public LinkedList<ObjectNode> sort(LinkedList<ObjectNode> list) {
+        // If no children, nothing to sort
+        if (null == list) {
+            return null;
+        }
+
         // Base case
         if (list.size() <= 1) {
             return list;
