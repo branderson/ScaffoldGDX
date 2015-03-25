@@ -1,6 +1,6 @@
 package com.brad.ScaffoldGDX.framework.helpers;
 
-import com.brad.ScaffoldGDX.framework.config.Controls;
+import com.brad.ScaffoldGDX.framework.config.ControlSettings;
 import com.brad.ScaffoldGDX.framework.gameobjects.ObjectNode;
 
 /**
@@ -9,12 +9,12 @@ import com.brad.ScaffoldGDX.framework.gameobjects.ObjectNode;
 public class ObjectInputHandler extends AbstractInputHandler
 {
     public ObjectNode node;
-    public Controls controls;
+    public ControlSettings controls;
 
     public ObjectInputHandler() {
     }
 
-    public ObjectInputHandler(Controls controls, ObjectNode node) {
+    public ObjectInputHandler(ControlSettings controls, ObjectNode node) {
         this.controls = controls;
         this.node = node;
     }

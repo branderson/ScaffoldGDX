@@ -3,6 +3,7 @@
 ScaffoldGDX is a game development framework built on top of libGDX which follows an MVC or Model-View-
 Controller design pattern and streamlines production of large scale games.
 
+### Design Philosophy
 The MVC design pattern means that every object is a collection of three separate objects, a
 modelObject which holds all the information about its state, a viewObject which holds information
 about drawing it to the screen and handles drawing, and a controlObject, which handles interfacing
@@ -10,15 +11,22 @@ with it. This is convenient if, for example, you want to save the game's state, 
 network and let the client handle rendering, or if you want to change the way it's displayed in
 different situations while keeping the state constant.
 
-ScaffoldGDX uses a custom scene graph for holding its game objects, called ObjectNodes.
-Before drawing, ObjectNodes are sorted by their z coordinate and then rendered according
-to the painter's algorithm.
-
 ScaffoldGDX tries in general to maintain an Ask, Don't Tell attitude towards objects, meaning
 objects tell each other what to do, rather than asking them about their state to make decisions for
 them. This is enforced where practical. However, viewObjects do ask their modelObjects about their
 state in order to make decisions about how to draw themselves. This is to maintain separation of
 the model from the view. The framework prioritizes maintaining MVC over enforcing Ask, Don't Tell.
+
+### SceneGraph
+ScaffoldGDX uses a custom scene graph for holding its game objects, called ObjectNodes.
+Before drawing, ObjectNodes are sorted by their z coordinate and then rendered according
+to the painter's algorithm.
+
+### ControlSettings
+The ControlSettings system allows one to easily configure control settings both through hardcoding
+them and also programmatically at runtime. It allows multiple keys set to the same function, the same
+key set to different functions, an unlimited number of functions, and also prevents bugs in which
+multiple keys with the same function multiply intended behavior.
 
 ## Installation
 

@@ -11,10 +11,12 @@ public class SnakeNodeModel extends ModelObject
     public int frame;
     public Tuples.Tuple2<Float, Float> direction;
     public float speed;  // Movements per second
+    public boolean canTurn;
 
     public SnakeNodeModel() {
         frame = 0;
         direction = new Tuples.Tuple2<Float, Float>(1f, 0f);
         speed = 5f;
+        canTurn = true;
     }
 }
