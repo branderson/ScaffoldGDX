@@ -1,6 +1,5 @@
 package com.brad.ScaffoldGDX.framework.helpers;
 
-import com.badlogic.gdx.Input;
 import com.brad.ScaffoldGDX.framework.config.Controls;
 import com.brad.ScaffoldGDX.framework.screen.AbstractScreen;
 
@@ -19,7 +18,7 @@ public class ScreenInputHandler extends AbstractInputHandler
 
     @Override
     public boolean keyDown(int keycode) {
-        if (keycode == controls.getControl(Input.Keys.ESCAPE)) {
+        if (keycode == controls.getControl("Quit")) {
             screen.escape();
             return true;
         }

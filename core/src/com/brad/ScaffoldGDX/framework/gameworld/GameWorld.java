@@ -22,7 +22,9 @@ public class GameWorld
         return scene;
     }
 
-    public ObjectNode getBackground() { return background; }
+    public ObjectNode getBackground() {
+        return background;
+    }
 
     public void setBackground(ObjectNode background) {
         this.background = background;
@@ -33,6 +35,7 @@ public class GameWorld
     }
 
     public void update() {
+        background.update();
         scene.update();
     }
 }

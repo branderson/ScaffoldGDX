@@ -31,13 +31,14 @@ public class LevelScreen extends GameScreen
         ObjectNode background = new ObjectNode();
         for (int i = 0; i < 40; i++) {
             for (int j = 0; j < 30; j++) {
-                ObjectNode backgroundNode = new BackgroundNode(renderer.getAtlas("sprites/packed/env/env.atlas"));
+                BackgroundNode backgroundNode = new BackgroundNode(renderer.getAtlas("sprites/packed/env/env.atlas"));
                 backgroundNode.getModel().setPosition(16 * i, 16 * j, -100);
                 background.addChild(backgroundNode);
             }
         }
         world.setBackground(background);
-        SnakeNode snake = new SnakeNode(renderer.getAtlas("sprites/packed/game/game.atlas"));
+        SnakeNode snake = new SnakeNode(renderer.getAtlas("sprites/packed/game/game.atlas"), getControls());
+        game.input.addProcessor(snake.getHandler());
         snake.getModel().setPosition(16, 16, 100);
         world.getScene().addChild(snake);
         Target target = new Target(renderer.getAtlas("sprites/packed/game/game.atlas"), "target");

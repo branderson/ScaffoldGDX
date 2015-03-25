@@ -12,7 +12,6 @@ public class SceneNode implements Pool.Poolable, Comparable<SceneNode>
 {
     // TODO: Figure out way to use inheritance with childList
     public LinkedList<SceneNode> childList;
-    protected NodeSort sort;
     private boolean live;
 
     public SceneNode() {

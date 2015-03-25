@@ -1,5 +1,6 @@
 package com.brad.ScaffoldGDX.framework.gameobjects.view;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,25 +12,16 @@ import com.brad.ScaffoldGDX.framework.gameobjects.model.ModelObject;
  */
 public class ViewObject extends SceneNode
 {
-    public ModelObject model;
     public TextureRegion region;
     public TextureAtlas atlas;
+    boolean drawable;
+    private ModelObject model;
 
-//    public ViewObject() {
-//        this.model = null;
-//        this.atlas = null;
-//        this.region = null;
-//    }
-//
-//    public ViewObject(TextureAtlas atlas) {
-//        this.atlas = atlas;
-//        this.model = null;
-//        this.region = null;
-//    }
-
-    public ViewObject(TextureAtlas atlas) {
+    public ViewObject(ModelObject model) {
         super();
-        this.atlas = atlas;
+        this.model = model;
+        this.atlas = null;
+        this.drawable = false;
     }
 
     public ViewObject(ModelObject model, TextureAtlas atlas) {
@@ -37,6 +29,7 @@ public class ViewObject extends SceneNode
         this.model = model;
         this.atlas = atlas;
         this.region = new TextureRegion();
+        this.drawable = true;
     }
 
     public ViewObject(ModelObject model, TextureAtlas atlas, String filename) {
@@ -44,11 +37,23 @@ public class ViewObject extends SceneNode
         this.model = model;
         this.atlas = atlas;
         this.region = atlas.findRegion(filename);
+        this.drawable = true;
+    }
+
+    public ModelObject getModel() {
+        return model;
+    }
+
+    public void setModel(ModelObject model) {
+        this.model = model;
     }
 
     public void draw(SpriteBatch batch) {
-        if (region != null) {
-            batch.draw(region, model.getX(), model.getY());
+        // TODO: Use drawable here
+        if (region != null && model != null) {
+            batch.draw(region, getModel().getX(), getModel().getY());
+        } else if (null == model) {
+            Gdx.app.log("ViewObject", "Check here");
         }
     }
 

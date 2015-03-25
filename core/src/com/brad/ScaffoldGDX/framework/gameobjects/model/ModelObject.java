@@ -1,6 +1,7 @@
 package com.brad.ScaffoldGDX.framework.gameobjects.model;
 
 import com.brad.ScaffoldGDX.framework.gameobjects.SceneNode;
+import com.brad.ScaffoldGDX.framework.helpers.Tuples;
 
 /**
  * Created by brad on 3/22/15.
@@ -42,6 +43,22 @@ public class ModelObject extends SceneNode
         position.x = x;
         position.y = y;
         position.z = z;
+    }
+
+    public void increment(float x, float y) {
+        position.x += x;
+        position.y += y;
+    }
+
+    public void increment(float x, float y, float z) {
+        position.x += x;
+        position.y += y;
+        position.z += z;
+    }
+
+    public void increment(Tuples.Tuple2<Float, Float> direction, float distance) {
+        position.x += direction.getT1() * distance;
+        position.y += direction.getT2() * distance;
     }
 
     @Override

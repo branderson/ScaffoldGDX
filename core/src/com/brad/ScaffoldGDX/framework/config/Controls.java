@@ -9,18 +9,22 @@ import java.util.HashMap;
  */
 public class Controls
 {
-    public HashMap<Integer, Integer> controls;
+    public HashMap<String, Integer> controls;
 
     public Controls() {
         controls = new HashMap();
-        controls.put(Input.Keys.ESCAPE, Input.Keys.ESCAPE);
+        controls.put("Quit", Input.Keys.ESCAPE);
+        controls.put("W", Input.Keys.W);
+        controls.put("S", Input.Keys.S);
+        controls.put("A", Input.Keys.A);
+        controls.put("D", Input.Keys.D);
     }
 
-    public void setControl(int key, int newKey) {
+    public void setControl(String key, int newKey) {
         controls.put(key, newKey);
     }
 
-    public int getControl(int key) {
+    public int getControl(String key) {
         return controls.get(key);
     }
 }
